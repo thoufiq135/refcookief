@@ -45,7 +45,7 @@ function Blog() {
         setWarn(false);
 
         try {
-            const response = await fetch("https://refcookieb1.vercel.app/Blog", {
+            const response = await fetch("localhost:5000/Blog", {
                 method: "POST",
                 body: JSON.stringify({
                     Title: title,
