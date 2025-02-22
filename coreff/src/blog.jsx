@@ -33,7 +33,7 @@ function Blog() {
         }
         fetchBlogs();
     }, [s]);
-    useEffect(()=>{submitBlog()},[s])
+
 
     async function submitBlog() {
         if (!title || !content) {
