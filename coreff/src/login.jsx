@@ -18,7 +18,7 @@ function Login(){
         async function datahandle(mail,pass){
             try{
                 setLloading(true)
-                const response =await fetch("localhost:5000/Login",{
+                const response =await fetch("http://localhost:5000/Login",{
                     method:"POST",
                     body:JSON.stringify({
                         Email:mail,

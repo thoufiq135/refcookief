@@ -1,6 +1,7 @@
 import "./signup.css"
 import Loader from "./loder";
 import { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { Navigate } from "react-router-dom";
 function Signup(){
@@ -20,7 +21,7 @@ function Signup(){
           console.log("password=",pass)
           try{
             setLloading(true)
-            const response=await fetch("localhost:5000/Signup",{
+            const response=await fetch("http://localhost:5000/Signup",{
                 method:"POST",
                 body:JSON.stringify({
                     Name:name,
