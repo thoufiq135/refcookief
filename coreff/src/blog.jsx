@@ -15,7 +15,7 @@ function Blog() {
     useEffect(() => {
         async function fetchBlogs() {
             try {
-                const response = await fetch("http://localhost:5000/Blog", {
+                const response = await fetch("https://refcookieb-f1.vercel.app/Blog", {
                     method: "GET",
                     credentials: "include",
                 });
@@ -55,7 +55,7 @@ function Blog() {
         setShow(true);
 
         try {
-            const response = await fetch("http://localhost:5000/Blog", {
+            const response = await fetch("https://refcookieb-f1.vercel.app/Blog", {
                 method: "POST",
                 body: JSON.stringify({
                     Title: title,
