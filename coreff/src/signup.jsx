@@ -21,7 +21,7 @@ function Signup(){
           console.log("password=",pass)
           try{
             setLloading(true)
-            const response=await fetch("https://refcookieb-f1.vercel.app/Signup",{
+            const response=await fetch("http://localhost:5000/Signup",{
                 method:"POST",
                 body:JSON.stringify({
                     Name:name,

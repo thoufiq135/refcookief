@@ -11,6 +11,7 @@ function Blog() {
     const [loading, setLoading] = useState(false);
     const [show, setShow] = useState(false);
     const [s, sets] = useState(false);
+    const[all,setall]=useState(null)
 
     useEffect(() => {
         async function fetchBlogs() {
@@ -90,6 +91,26 @@ function Blog() {
             sets((prev) => !prev);
         }
     }
+    async function fetchall(){
+        try{
+            const response=await fetch("https://refcookieb-f1.vercel.app/Blog/All",
+                {method:"GET",
+                credentials:"include",
+            headers:{"Content-Type":"application/json"}}
+            )
+            const r= await response.json()
+           
+            if(response.status===200){
+                 setall(r)
+               
+            }else{
+                alert("server is busy!")
+            }
+
+        }catch(e){
+            console.log("err at all fetch",e)
+        }
+    }
 
     return (
         <>
@@ -132,18 +153,36 @@ function Blog() {
                     <div className="blog-container">
                         {blogData.length > 0 ? (
                             blogData.map((blog, index) => (
+                                
                                 <div key={index} className="card">
                                     <h2>{blog.Title}</h2>
                                     <h3 id="content">{blog.Content}</h3>
-                                    <p id="author">Author: {blog?.user?.Name || ""}</p>
+                                
                                 </div>
+                                
                             ))
                         ) : (
                             <p>No blogs available.</p>
                         )}
+                        
                     </div>
+                    
                 )}
+               
             </div>
+            <button id="all" onClick={fetchall}>All Blogs</button>
+            {all && (
+    <div id="allpar">
+        {all.map((blog, index) => (
+            <div key={index} id="allcard">
+                <span >Author: {blog.user?.Name||""}</span>
+                <h3>Title: {blog.Title}</h3>
+                <h3>Content: {blog.Content}</h3>
+            </div>
+        ))}
+    </div>
+)}
+
         </>
     );
 }
